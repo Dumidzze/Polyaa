@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для тебя 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #ffe4ec, #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px;
+  width: 90%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,.15);
+  animation: fadeIn 1s ease;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #666;
+  font-size: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 18px;
+  padding: 14px;
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  background: #ff5a8a;
+  color: white;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(255,90,138,.3);
+}
+
+.hidden { display: none; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.heart {
+  position: absolute;
+  font-size: 18px;
+  animation: float 6s linear infinite;
+  opacity: .6;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+</style>
+</head>
+<body>
+
+<div class="card" id="screen1">
+  <h1>Для тебя 💖</h1>
+  <p>Введи пароль, который я тебе скажу</p>
+  <input type="password" id="pass" placeholder="Пароль">
+  <button onclick="unlock()">Открыть ✨</button>
+</div>
+
+<div class="card hidden" id="screen2">
+  <h1>Сюрприз для тебя 💝</h1>
+  <p>
+    <span id="name"></span><br><br>
+    Я хотел подарить тебе не просто вещь,<br>
+    а маленький момент радости 💫<br><br>
+    Нажми кнопку, когда будешь готова.
+  </p>
+  <button onclick="go()">Активировать подарок 🎁</button>
+</div>
+
+<script>
+const PASSWORD = "LOVE";
+const LINK = "https://ga.gift/ru/9a0f217340ae44a1a71129d1d1435038";
+const NAME = "Любимая"; // можно имя или оставить так
+
+document.getElementById("name").innerText = NAME;
+
+function unlock() {
+  if (document.getElementById("pass").value === PASSWORD) {
+    document.getElementById("screen1").classList.add("hidden");
+    document.getElementById("screen2").classList.remove("hidden");
+    hearts();
+  } else {
+    alert("Пароль не тот 🙈");
+  }
+}
+
+function go() {
+  window.location.href = LINK;
+}
+
+function hearts() {
+  for (let i = 0; i < 12; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerText = "💖";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(h);
+  }
+}
+</script>
+
+</body>
+</html>
