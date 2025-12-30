@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Подарок 🎁</title>
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+    background: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .box {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    text-align: center;
+    max-width: 320px;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 16px;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #ff5a8a;
+    color: white;
+    cursor: pointer;
+  }
+  .error {
+    color: red;
+    margin-top: 10px;
+    display: none;
+  }
+</style>
+</head>
+<body>
 
+<div class="box">
+  <h2>Подарок для тебя 🎁</h2>
+  <p>Введи пароль, который я тебе скажу</p>
+
+  <input type="password" id="pass" placeholder="Пароль">
+  <button onclick="check()">Открыть</button>
+
+  <div class="error" id="err">Неверный пароль</div>
+</div>
+
+<script>
+const PASSWORD = "LOVE";
+const LINK = "https://ga.gift/ru/9a0f217340ae44a1a71129d1d1435038";
+
+function check() {
+  const p = document.getElementById("pass").value;
+  if (p === PASSWORD) {
+    window.location.href = LINK;
+  } else {
+    document.getElementById("err").style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>
